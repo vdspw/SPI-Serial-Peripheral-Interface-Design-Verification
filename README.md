@@ -15,3 +15,7 @@ CPOLARITY  CPHASE    SCLK   EDGE
 
 Master -- New data transmotted on the postive edge.
           Data length is varialbe ( 8 bit to 32 bit) 
+OPERATIONS:
+1. CS is low denoting the start of the serial communication and becomes high when the transaction comes to an end.
+2. MOSI -- singal is the data which is transmitted and this is recieved by the slave.
+3. SLave caputres the data at the negative edge of the clock.
