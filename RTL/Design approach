@@ -1,0 +1,9 @@
+Top level description :
+1. INPUT -> clk, rst, tx_enable
+2. OUTPUT -> mosi(master out slave in) , chip select(cs_), sclk
+
+The operation states:
+1. IDLE -> no operation is happening the system is ready for operation.
+2. START_TX -> enabled by the active high (tx_enable) signal.
+3. TX_DATA -> transaction started.
+4. END_TX -> End of transaction.
