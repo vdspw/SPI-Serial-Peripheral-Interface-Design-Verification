@@ -23,4 +23,17 @@ reset:
 1. If reset is high the state the system is going to be is IDLE.
 2. else travels to the next state.
 
+Next State decoder:
+1. When any change in the inputs this block gets exected.
+2. IDLE state: mosi is 0; chip select is 1 (active low signal),when tx_enabled the state should change.
+3. START_Tx state : chip_select is 0 , start_tx to tx_data happens at count 3.
+4. Tx_data : put the current bit to the MOSI, do this till the bit_count is 8 .after the bit count crosses 8 reach end_tx.
+5. End_tx : chip select becomes 1. mosi (the o/P) becomes zero.
 
+Counter:
+1. Operates on the positive edge of the clock.
+2. In the IDLE state the count is 0.
+3. In the start_tx increment the count by 1.
+4. In the tx_data when bit_count is not equal to 8 , and count is less than 7 
+increment count by 1. els ecount is 0 and bit_count increments by 1.
+5. End_tx : count inceremnt by 1 and bit_count is 0.
