@@ -7,3 +7,20 @@ The operation states:
 2. START_TX -> enabled by the active high (tx_enable) signal.
 3. TX_DATA -> transaction started.
 4. END_TX -> End of transaction.
+
+Use typedef to define the states.
+Intitalize the clocking block register -> spi_sclk to 0;Bit count to 0 and counter reg to 0.
+
+the design is dividied as per states and we write the actions of every component :
+sclk :(behaviour in all the states) 
+1. Generated on the posedge of the clk. 
+2. In the IDLE state the spi_clk is 0.
+3. In the start_tx state counter value should be 0,1,2,7 for spi+sclk to be high & remaining values its low ( 50 % duty cycle clk).
+4. In the Tx_data the logic is same as the above point.
+5. end_tx -> when count is less than 3 (clk is high).
+
+reset:
+1. If reset is high the state the system is going to be is IDLE.
+2. else travels to the next state.
+
+
